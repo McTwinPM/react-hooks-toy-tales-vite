@@ -25,6 +25,12 @@ function App() {
     setToys((prevToys) => [...prevToys, newToy]);
   };
 
+  const updatedToy = (updatedToyLike) => {
+    setToys((prevToys) =>
+      prevToys.map((toy) => (toy.id === updatedToyLike.id ? updatedToyLike : toy))
+    );
+  };
+
   return (
     <>
       <Header />
@@ -32,7 +38,7 @@ function App() {
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>
-      <ToyContainer toys={toys} />
+      <ToyContainer toys={toys} updatedToy={updatedToy} />
     </>
   );
 }
