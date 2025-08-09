@@ -31,6 +31,10 @@ function App() {
     );
   };
 
+  const donateToy = (id) => {
+    setToys((prevToys) => prevToys.filter((toy) => toy.id !== id));
+  };
+
   return (
     <>
       <Header />
@@ -38,7 +42,7 @@ function App() {
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>
-      <ToyContainer toys={toys} updatedToy={updatedToy} />
+      <ToyContainer toys={toys} updatedToy={updatedToy} donateToy={donateToy} />
     </>
   );
 }

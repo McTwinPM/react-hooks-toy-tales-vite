@@ -1,6 +1,6 @@
 import React from "react";
 
-function ToyCard({ id, name, image, likes, updatedToy }) {
+function ToyCard({ id, name, image, likes, updatedToy, donateToy }) {
   const handleLike = () => {
     // Handle like button click
     fetch(`http://localhost:3001/toys/${id}`, {
@@ -32,6 +32,7 @@ function ToyCard({ id, name, image, likes, updatedToy }) {
         return response.json();
       })
       .then(() => {
+        donateToy(id);
         console.log("Toy donated:", id);
       })
       .catch((error) => console.error("Error donating toy:", error));
